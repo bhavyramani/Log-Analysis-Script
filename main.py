@@ -80,7 +80,31 @@ def print_ip_count():
         write_output(ip + ',', pad_size)
         write_output(str(count))
 
-    write_output('\n\n') # Seperator for next output
+    write_output('\n') # Seperator for next output
+    
+
+# Function to print most frequent endpoint as per output format
+def print_most_frequent_endpoint():
+    # Initialize max count of an endpoint with 0
+    max_count = 0
+    # To store most frequent endpoint
+    most_freq_endpoint = ''
+    
+    # Find most frequent endpoint
+    for endpoint, count in end_point_count.items():
+        if count > max_count:
+            max_count = count
+            most_freq_endpoint = endpoint
+            
+    pad_size = len(most_freq_endpoint) + 10
+
+    write_output('Endpoint,', pad_size)
+    write_output('Access Count')
+    
+    write_output(most_freq_endpoint + ',', pad_size)
+    write_output(str(max_count))
+    
+    write_output('\n') # Seperator for next output
 
 if __name__ == '__main__':
     global output_file
@@ -98,5 +122,7 @@ if __name__ == '__main__':
             
         # Calling main functionalities
         print_ip_count()
+        print_most_frequent_endpoint()
+        # print_brute_force_attempts()
     
     output_file.close()
