@@ -105,6 +105,21 @@ def print_most_frequent_endpoint():
     write_output(str(max_count))
     
     write_output('\n') # Seperator for next output
+    
+
+# Function to print Brute Force Attempts as per output format
+def print_brute_force_attempts():
+    pad_size = 20
+    
+    write_output('IP Address,', pad_size)
+    write_output('Failed Login Count')
+    
+    for ip, count in brute_force_attepmts.items():
+        # Mark as brute force attempt if count is greater than threshold
+        if count >= brute_force_threshold:
+            write_output(ip + ',', pad_size)
+            write_output(str(count))
+    
 
 if __name__ == '__main__':
     global output_file
@@ -123,6 +138,6 @@ if __name__ == '__main__':
         # Calling main functionalities
         print_ip_count()
         print_most_frequent_endpoint()
-        # print_brute_force_attempts()
+        print_brute_force_attempts()
     
     output_file.close()
